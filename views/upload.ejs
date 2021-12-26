@@ -1,0 +1,106 @@
+<%- include("partials/header", { user, title: "Home" }) %>
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Upload item - gmodshop</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+      <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-112520490-5"></script>
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+      <style type="text/css">
+      	form {
+    		margin-top: 4rem;
+    		margin-left: auto;
+    		margin-right: auto;
+    		max-width: 680px;
+		}
+
+		form .form-group {
+		    margin-bottom: 3rem;
+		}
+		
+		form label.d-block {
+		    display: inline-block !important;
+		    width: calc(50% - 4px);
+		}
+		
+		form label.d-block small {
+		    display: block;
+		    margin: 0 0 0 20px;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
+		}
+      </style>
+
+   </head>
+   <body>
+      <main role="main" class="pb-3">
+         <div class="alert alert-info h6 p-4 rounded-0 text-dark">Запрещено выкладывать слитые аддоны.</div>
+         <div class="container mt-5">
+            <div class="row">
+               <div class="col-12 col-lg-9 m-auto">
+                  <div class="sect">
+                     <div class="text-center">
+                        <h2>Загрузка нового аддона</h2>
+                     </div>
+                     <form method="post" action="/upload">
+                        <!--                     <div class="loading-bar"><div class="loading-inner"></div></div>
+                           <div id="uploadmsg"></div>
+                           <br>
+                           <div id="form-response"></div> -->
+                        <div class="form-group">
+                           <h6>Название</h6>
+                           <input class="form-control" name="name" type="text" name="title" placeholder="Название" value="" oninput="" maxlength="60" required>
+                        </div>
+                        <div class="form-group">
+                           <h6>Описание</h6> <!-- <a href="/tutorials/markup-formatting" class="small a-arrow">гайд</a> -->
+                           <textarea class="form-control" name="description" rows="5" placeholder="Добавьте описание" required></textarea>
+                        </div>
+                        <div class="form-group">
+                           <h6>Категория</h6>
+                           <p class="text-muted small">Выберите основную или наиболее релевантную категорию</p>
+                           <label class="d-block"><input type="radio" name="category" value="1"> Entities <small class="text-muted">принтеры, биткойны, казино</small></label>
+                           <label class="d-block"><input type="radio" name="category" value="2"> Weapons <small class="text-muted">тазер, наручники, оружие, свепы</small></label>
+                           <label class="d-block"><input type="radio" name="category" value="3"> GUI <small class="text-muted">худ, f4 меню, чаты, таб-меню</small></label>
+                           <label class="d-block"><input type="radio" name="category" value="4"> Web <small class="text-muted">загрузочный экран, дискорд, донат-системы</small></label>
+                           <label class="d-block"><input type="radio" name="category" value="5"> Administration <small class="text-muted">проп-защита, грин-зона, антинлр, админка, анти-чит</small></label>
+                           <label class="d-block"><input type="radio" name="category" value="6"> Gamemode <small class="text-muted">режимы, даркрп, пропхант, мардер, ТТТ</small></label>
+                           <label class="d-block"><input type="radio" name="category" value="0"> Другое <a class="a-arrow small" href="/support/create" target="_blank">дайте нам обратную связь</a> <small class="text-muted">Если тут этого нету</small></label>
+                        </div>
+                        <div class="form-group">
+                           <h6>Режим</h6>
+                           <p class="text-muted small">Для чего создан этот аддон?</p>
+                           <label class="d-block"><input type="radio" name="gamemodes" value="1"> DarkRP</label>
+                           <label class="d-block"><input type="radio" name="gamemodes" value="2"> TTT</label>
+                           <label class="d-block"><input type="radio" name="gamemodes" value="3"> Sandbox</label>
+                           <label class="d-block"><input type="radio" name="gamemodes" value="4"> ClockWork</label>
+                           <label class="d-block"><input type="radio" name="gamemodes" value="0"> Другое <a class="a-arrow small" href="/support/create" target="_blank">дайте нам обратную связь</a></label>
+                        </div>
+<!--                         <div class="form-group">
+                           <h6>Язык</h6>
+                           <p class="text-muted small">Какие языки это поддерживает?</p>
+                           <label class="d-block"><input type="checkbox" name="languages" value="1"> English</label>
+                           <label class="d-block"><input type="checkbox" name="languages" value="2"> French</label>
+                           <label class="d-block"><input type="checkbox" name="languages" value="3"> Russian</label>
+                           <label class="d-block"><input type="checkbox" name="languages" value="0"> Other <a class="a-arrow small" href="/contact" target="_blank">give us feedback/suggestions</a></label>
+                        </div> -->
+                        <div class="form-group">
+                           <h6>Теги</h6>
+                           <input class="form-control" type="text" name="tags" placeholder="Отдельные теги с ',' пример: garry,new,man,swep" value="" maxlength="60" required>
+                        </div>
+                        <div class="form-group">
+                           <button type="submit" class="btn btn-primary">Продолжить</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+               <script src="/sitejs"></script>
+            </div>
+         </div>
+      </main>
+   </body>
+</html>

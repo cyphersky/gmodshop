@@ -1,0 +1,10 @@
+{
+  "steamapi": "STEAMAPIKEY",
+  "unitpaysecret": "",
+  "unitpaypublic": "",
+  "supporttagchannel": "ID DISCORD SUPPORT CHANEL",
+  "verifyrole": "ID DISCORD ROLE",
+  "mongodburl": "mongodb://localhost/gmodshop",
+  "discordtoken": "DISCORD_TOKEN",
+  "qiwisecretkey": "QIWI_SECRET"
+}

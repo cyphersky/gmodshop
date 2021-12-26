@@ -1,0 +1,113 @@
+<%- include("../partials/header", { user, title: "Home" }) %>
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Supports - gmodshop</title>
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"> -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+      <link rel="stylesheet" href="/css/site.css?v=B7wBMkqLgdFB7JrUL8jxa9XBNu3bE7jNw-c8Wfr_sg0">
+      <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-112520490-5"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+   </head>
+   <body>
+      <main role="main" class="pb-3">
+         <div class="container mt-5">
+            <div class="row mt-5">
+               <div class="col-md-3 side-col">
+                  <ul class="side-list">
+                     <li>
+                        <p>Dashboard</p>
+                     </li>
+                     <li><a href="/dashboard">Главная</a></li>
+                     <li><a href="/dashboard/settings">Настройки</a></li>
+                     <li><a href="/support">Поддержка</a></li>
+                     <li><a href="/dashboard/oauth">Привязать дискорд</a></li>
+                     <li>
+                        <p>Uploading</p>
+                     </li>
+                     <li><a href="/dashboard/items">Мои аддоны</a></li>
+                     <li><a href="/upload">Загрузить аддон</a></li>
+                     <li><a href="/become-a-seller">Рекомендации продавца</a></li>
+                     <li>
+                        <p>Payments</p>
+                     </li>
+                     <!-- <li><a href="/dashboard/payments">Store Transactions</a></li> -->
+                     <li><a href="/dashboard/downloads">Мои покупки</a></li>
+                     <li><a href="/dashboard/payments">Выплаты</a></li>
+                     <!-- <li><a href="/store">Store</a></li> -->
+                  </ul>
+               </div>
+               <div class="col-md-9">
+                  <div class="seller-nav"><a href="/support">Мои вопросы</a><a href="/support/create">Создать вопрос</a></div>
+                  <div class="sect-compact">
+                     <div class="mb-3">
+                        <h1 class="mb-2"><%=TicketInfo.title%></h1>
+                        <div class="ticket-status">Статус:
+                           <% if (TicketInfo.status == 'wait') { %>
+                                 <span class="text-info">Открыт</span>
+                              <% } else if (TicketInfo.status == 'response') { %>
+                                 <span class="text-warning">Ожидает ответа</span>
+                              <% } else if (TicketInfo.status == 'closed') { %>
+                              <span class="text-danger">Закрыто</span>
+                              <% } %>
+                        </div>
+                     </div>
+                     <div class="sect-compact support-ticket-reply-primary bg-section">
+                        <div class="profile-section">
+                           <a href="/u/<%=user.steamid%>">
+                              <div class="tiny-avatar mr-1" id="avatar_preview" style="background-image: url(https://cdn.gmodshop.ru/avatars/<%=user.steamid%>.png)"></div>
+                              <h6 class="m-0 fade-hover"><%=user.username%></h6>
+                           </a>
+                           <span class="float-right mt-2 text-muted"><span class="timeago" time="<%=TicketInfo.date / 1000%>"></span></span>
+                        </div>
+                        <div class="mt-3">
+                           <p class="body-formatting" formatted="true">
+                           <p><%=TicketInfo.subject%></p>
+                           </p>
+                        </div>
+                     </div>
+                     <div class="sect-compact">
+                        <% TicketInfo.messages.forEach(msg => {%>
+                        <div class="support-ticket-reply bg-section">
+                           
+                           <div class="profile-section">
+                              <a href="/u/<%=msg.sid%>">
+                                 <div class="tiny-avatar mr-1" id="avatar_preview" style="background-image: url(https://cdn.gmodshop.ru/avatars/<%=msg.sid%>.png)"> </div>
+                                 <h6 class="m-0 fade-hover"><%=msg.name%></h6>
+                              </a>
+                              <span class="float-right mt-2 text-muted"><span class="timeago" time="<%=msg.date /1000%>"></span></span>
+                           </div>
+                           <div class="mt-3">
+                              <p class="body-formatting" formatted="true">
+                              <p><%=msg.msg%></p>
+                              </p>
+                           </div>
+                        </div>
+                        <% }) %>
+                        <% if (TicketInfo.status == 'wait' || TicketInfo.status == 'response') { %>
+                        <form class="general-form m-0 mw-100" form-url="/api/support/reply?id=<%=TicketInfo.id%>" form-redirect="/support/view?id=<%=TicketInfo.id%>" form-fancy="3">
+                           <div id="form-response"></div>
+                           <div class="form-group mb-3">
+                              <h6>Ответить</h6>
+                              <textarea class="form-control" name="message" rows="4" placeholder="Напишите сообщение для администрации"></textarea>
+                           </div>
+                           <button type="submit" class="btn btn-primary btn-sm">Ответить</button>
+                           <a class="btn btn-outline-danger btn-sm" href="javascript:;" onclick="simplePost('/api/support/close?id=<%=TicketInfo.id%>', this, '', true, null)">Закрыть тикет</a>
+                        </form>
+                        <% } else { %>
+                        <div class="p-3">
+                           <p class="m-0">Билет был закрыт, и вы не можете ответить, <a href="/support/create">создайте новый билет</a> если у вас все еще есть проблемы.</p>
+                        </div>
+                        <% } %>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <script src="/sitejs"></script>
+      </main>
+   </body>
+</html>

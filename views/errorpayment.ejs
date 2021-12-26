@@ -1,0 +1,126 @@
+<%- include("partials/header", { user, title: "Home" }) %>
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Payments - gmodshop</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+      <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-112520490-5"></script>
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js" integrity="sha512-Y2IiVZeaBwXG1wSV7f13plqlmFOx8MdjuHyYFVoYzhyRr3nH/NMDjTBSswijzADdNzMyWNetbLMfOpIPl6Cv9g==" crossorigin="anonymous"></script>
+      <link href="https://media.gmodstore.com/_/assets/css/gmodstore.345f8b.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+      <style type="text/css">
+        ul  { list-style: none; }
+      </style>
+   </head>
+   <body>
+      <div id="openModal" class="modalgay">
+         <div class="modalgay-dialog">
+            <div class="modalgay-content">
+               <div class="modalgay-header">
+                  <h3 class="modalgay-title">Пополнение средств</h3>
+                  <a href="#close" title="Close" class="close">×</a>
+               </div>
+               <div class="modal-body">
+                  <div class="input-item input-with-label">
+                     <label for="swalllet" class="input-item-label">Выберите способ оплаты:</label>
+                     <form action="/donateqiwitrypay" id="deposit__form" method="post">
+                        <input style="display:none" id="systemPay" value="">
+
+                        <ul class="pay-list guttar-15px">
+<!--                            <li class="pay-item" data-system="q" onclick="$('#deposit__form').attr('action', '/payPiastrix');$('#systemPay').val('1'); $('#dws').hide()">
+                              <input type="radio" class="pay-check" name="pay_option" id="pay-coin">
+                              <label class="pay-check-label" for="pay-coin">
+                              <img src="https://nvuti.uk/assets/img/piastrix.png" style="height: 35px;margin: 10px;" alt="pay-logo">
+                              </label>
+                           </li>
+                           <li class="pay-item" onclick="$('#deposit__form').attr('action', '/qpay');$('#systemPay').val('2'); $('#dws').hide() ">
+                              <input type="radio" class="pay-check" name="pay_option" id="pay-paypal">
+                              <label class="pay-check-label" for="pay-paypal">
+                              <img src="https://nvuti.uk/assets/img/fk-kassa.png" alt="pay-logo" style="height: 54px;">
+                              </label>
+                           </li>
+                           <li class="pay-item" onclick="$('#deposit__form').attr('action', '/litepay');$('#systemPay').val('3'); $('#dws').hide()" style="opacity: 0.4;pointer-events: none;">
+                              <input type="radio" class="pay-check" name="pay_option" id="pay-paypal1">
+                              <label class="pay-check-label" for="pay-paypal1">
+                              <img src="https://nvuti.uk/assets/img/lite-kassa.png" alt="pay-logo" style="height: 35px;margin: 10px;">
+                              </label>
+                           </li> -->
+                           <li class="pay-item" onclick="$('#deposit__form').attr('action', '/donateqiwitrypay');$('#systemPay').val('qiwi'); $('#dws').hide()">
+                              <input type="radio" class="pay-check" name="pay_option" id="pay-paypal11" value="qiwi">
+                              <label class="pay-check-label" for="pay-paypal11">
+                              <img src="https://nvuti.uk/assets/img/qiwipay.png" style="height: 35px;margin: 10px;" alt="pay-logo">
+                              </label>
+                           </li>
+
+                           <li class="pay-item" onclick="$('#deposit__form').attr('action', '/donateqiwitrypay');$('#systemPay').val('qiwi'); $('#dws').hide()">
+                              <input type="radio" class="pay-check" name="pay_option" id="pay-paypal111" value="qiwi">
+                              <label class="pay-check-label" for="pay-paypal111">
+                              <img src="https://nvuti.uk/assets/img/card_mir_visa_mastercard.png" alt="pay-logo" style="height: 54px;">
+                              </label>
+                           </li>
+<!--                            <li class="pay-item" onclick="$('#deposit__form').attr('action', '/fpay');$('#systemPay').val('6'); $('#dws').hide()">
+                              <input type="radio" class="pay-check" name="pay_option" id="pay-paypal1111">
+                              <label class="pay-check-label" for="pay-paypal1111">
+                              <img src="https://nvuti.uk/assets/img/youmoney.png" alt="pay-logo" style="height: 35px;margin: 10px;">
+                              </label>
+                           </li> -->
+<!--                            <li class="pay-item" onclick="$('#deposit__form').attr('action', '/donateqiwitrypay');$('#systemPay').val('6'); $('#dws').hide()">
+                              <input type="radio" class="pay-check" name="pay_option" id="pay-paypal1111" value="unitpay">
+                              <label class="pay-check-label" for="pay-paypal1111">
+                              <img src="https://www.ecrs.ru/netcat_files/190/267/unitpay.png" alt="pay-logo" style="height: 35px;margin: 10px;">
+                              </label>
+                           </li> -->
+                        </ul>
+                        <label for="token-address" class="input-item-label">Сумма:</label>
+                     <div class="form-group"><input type="number" id="summa" min="1" max="100000" name="summa" value="100" required class="form-control"></div>
+                     <span class="input-note">* Все комисии <span id="minSum">берем на себя</span></span>
+                     <br>
+                    <div class="d-sm-flex justify-content-between align-items-center">
+                     <button id="withB" class="btngay btngay-primary" type="submit" style="">Далее</button>
+                    </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script>
+         document.addEventListener("DOMContentLoaded", function () {
+           var scrollbar = document.body.clientWidth - window.innerWidth + 'px';
+           console.log(scrollbar);
+           document.querySelector('[href="#openModal"]').addEventListener('click', function () {
+             document.body.style.overflow = 'hidden';
+             document.querySelector('#openModal').style.marginLeft = scrollbar;
+           });
+           document.querySelector('[href="#close"]').addEventListener('click', function () {
+             document.body.style.overflow = 'visible';
+             document.querySelector('#openModal').style.marginLeft = '0px';
+           });
+         });
+      </script>
+      <main role="main" class="pb-3">
+         <div class="container mt-5">
+            <div class="col-12">
+               <div class="section text-center">
+                  <h1>Ошибка баланса</h1>
+                  <p>У вас недостаточно средств</p>
+                  <a href="#openModal" style="max-width: 250px; margin: 0 auto; border-radius: 15px;" class="btngay btngay-primary">Пополнить счет</a>
+               </div>
+            </div>
+         </div>
+      </main>
+   </body>
+</html>

@@ -1,0 +1,310 @@
+<%- include("partials/header", { user, title: "Home" }) %>
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta charset="utf-8">
+      <title><%=product.name%> для Garry's Mod | GmodShop.ru</title>
+      <meta name="title" content="<%=product.name%> для Garry's Mod | GmodShop.ru">
+      <meta property="og:title" content="<%=product.name%> для Garry's Mod | GmodShop.ru">
+      <meta property="og:site_name" content="gmodshop.ru">
+      <meta name="url" content="https://gmodshop.ru">
+      <meta name="language" content="RU">
+      <meta name="robots" content="index,follow">
+      <meta name="theme-color" content="#1394f0">
+
+      <meta name="image" content="<%=product.img%>">
+      <meta property="og:image" content="<%=product.img%>">
+
+      <meta name="description" content="<%=product.description%>">
+      <meta property="og:description" content="<%=product.description%>">
+      <meta name="keywords" content="free, best, gmod, garry's, addons, lua, download, backdoor, scanner, darkrp, ttt, rp, sandbox, Escpapemenu, ESCM, Escape Menu">
+      <meta property="og:keywords" content="free, best, gmod, garry's, addons, lua, download, backdoor, scanner, darkrp, ttt, rp, sandbox, Escpapemenu, ESCM, Escape Menu">
+         
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"> -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+      <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-112520490-5"></script>
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="   anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js" integrity="sha512-Y2IiVZeaBwXG1wSV7f13plqlmFOx8MdjuHyYFVoYzhyRr3nH/NMDjTBSswijzADdNzMyWNetbLMfOpIPl6Cv9g==" crossorigin="anonymous"></script>
+   </head>
+   <% if (product) { %>
+   <body>
+      <main role="main" class="pb-3">
+         <div class="addon-bg" style="background-image: url(<%=product.img%>)"></div>
+         <div class="container mt-5">
+            <div class="row">
+               <% if (product.allow == 'wait') {%>
+               <div class="col-12">
+                <div class="alert alert-warning">Аддон находится на модерации, подождите, пока мы одобрим его. Если вы все еще ждёте, <a href='/support/create'>напишите нам!</a></div>
+               </div>
+               <% } else if (product.allow == 'deny') { %>
+               <div class="col-12">
+                <div class="alert alert-danger">Аддон отключен модерацией, если вы не согласны с решением <a href='/support/create'>напишите нам!</a></div>
+               </div>
+               <% } %>
+               <div class="col-12 text-white mb-4 text-shadow-1">
+                  <h1 class="display-4 mb-2 text-shadow-1"><%=product.name%></h1>
+                  <div class="profile-section">
+                     <a href="/u/<%=product.seller%>" class="text-white">
+                        <div class="tiny-avatar mr-1" id="avatar_preview" style="background-image: url(https://cdn.gmodshop.ru/avatars/<%=product.seller%>.png)"> </div>
+                        <h6 class="m-0 fade-hover"><%=seller.nickname%> <span class="<%=seller.rank%>"><%=seller.rankname%></span></h6>
+                     </a>
+                     <span>
+                     выложил <span class="timeago" time="<%=datatime%>"></span>
+                  </div>
+                  <p>
+                  </p>
+               </div>
+               <div class="col-md-8">
+                  <div class="sect-compact pt-0 mb-0">
+                     <% var imgarray = product.image_order.split(",").map(String)%>
+                     <a href="https://cdn.gmodshop.ru/uploads/<%=product.id%>/imgs/<%=imgarray[0]%>" data-toggle="lightbox" class="main-addon-img-lightbox" target="_blank">
+                        <div class="graphic graphic-large bg-contain graphic-image main-addon-img mb-2" style="background-image: url(https://cdn.gmodshop.ru/uploads/<%=product.id%>/imgs/<%=imgarray[0]%>);"></div>
+                     </a>
+                  </div>
+                  <div class="sect-compact">
+                     <div class="item-image-thumbs">
+                        <%var imgarray = product.image_order.split(",").map(String);
+                           imgarray.forEach(immg => {
+                              if (immg == '') return%>
+                        <div class="item-image-thumb" link-url="https://cdn.gmodshop.ru/uploads/<%=product.id%>/imgs/<%=immg%>"  style="background-image: url(https://cdn.gmodshop.ru/uploads/<%=product.id%>/imgs/<%=immg%>)"></div>
+                        <% })%>
+                     </div>
+                  </div>
+                  <div class="p-3 bg-section">
+                     <div class="sect-compact">
+                        <h7>Описание</h7>
+                        <p class="mt"><%=product.description%></p>
+                     </div>
+                  </div>
+                  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+                  <script>
+                     document.getElementById('content').innerHTML = marked("<%=product.description%>");
+                  </script>
+                  <div class="mt-4">
+                     <div class="sect-compact mb-0" id="reviews">
+                        <!-- <h3>1 отзыв</h3> -->
+                        <h3>Отзывы</h3>
+                        <% for (var value of product.reviews.values()) { %>
+                        <div class="p-3 bg-section">
+                           <div class="profile-section">
+                              <a href="/u/<%=value.sid%>" class="text-body">
+                              <div class="tiny-avatar mr-1" id="avatar_preview" style="background-image: url(https://cdn.gmodshop.ru/avatars/<%=value.sid%>.png)"> </div>
+                              <h6 class="m-0 fade-hover"><%=value.name%> <span class="<%= all.find(item => item.sid === value.sid).rank %>"><%= all.find(item => item.sid === value.sid).rankname %></span></h6>
+                              </a>
+
+                              
+                              <span class="float-right">
+                                 <% if (value.status == '1') {%>
+                                 <span class="text-success">рекомендует</span>
+                                 <% } else if (value.status == '0') { %>
+                                 <span class="text-danger">не рекомендует</span>
+                                 <% } %>
+                                 <% if (value.work == '0') { %>
+                                 <span class="text-danger pl-2">не работает</span>
+                                 <% } %>
+                              </span>
+                           </div>
+                           <p class="mt-3 body-formatting mb-0" formatted="true">
+                           <p><%=value.msg%></p>
+<!--                            <% if (user && value.sid == user.steamid) { %>
+                           <a href="/review/<%=product.id%>">Редактировать</a>
+                           <% } %> -->
+                           </p>
+                        </div>
+                        <% } %>
+                        <% if (Object.keys(product.reviews).length == 0) { %>
+
+                        <div class="h6 text-muted">Отзывов не найдено :(</div>
+                
+                        <% } %>
+<!--                         <div class="p-3 bg-section">
+                           <div class="profile-section">
+                              <a href="/u/76561198204313092" class="text-body">
+                                 <div class="tiny-avatar mr-1" id="avatar_preview" style="background-image: url(https://cdn.gmodshop.ru/avatars/76561198204313092.png)"> </div>
+                                 <h6 class="m-0 fade-hover">cyphersky <span class="rank rank-admin">Система</span></h6>
+                              </a>
+                           </div>
+                           <p class="mt-3 body-formatting mb-0" formatted="true">
+                           <p>Это тестовое сообщение чтобы проверить стабильность системы отзывов. После покупки аддона вы сможете оставить отзыв под аддоном который вы купили. Хороших покупок 😀</p>
+                           </p>
+                        </div> -->
+                     </div>
+                     <div class="sect-compact">
+                        <hr>
+                        <% if (!user) {%>
+                        <div class="h6">Вы должны купить этот аддон чтобы оставить отзыв.</div>
+                        <% } %>
+                        <% if (user) {
+                        var buy = false
+                        for (var value of purchases.values()) {
+                          if (value == product.id) {
+                          buy = true
+                          }
+                        }
+
+
+                        if (product.seller == user.steamid) {%>
+                        <div class="h6">Нельзя оставить отзыв на свой аддон.</div>
+                        <% } else if (buy) { %>
+                        <a href="/review/<%=product.id%>">Оставить отзыв</a>
+                        <% } else {%>
+                        <div class="h6">Вы должны купить этот аддон чтобы оставить отзыв.</div>
+                        <% } } %>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 side-col">
+                  <% if (product.id == 41) { %>
+                  <div class="alert alert-warning" style="font-size: 13px;">
+                     <strong>Используется DRM.</strong><br>Автор аддона отметил, что этот аддон использует стороннюю службу DRM, у вас может быть ограниченный доступ к исходному коду
+                  </div>
+                  <% } %>
+                  <% if (product.id == 98) { %>
+                  <div class="alert alert-warning" style="font-size: 13px;">
+                     <strong>DLC для аддона.</strong><br>Данный аддон идёт как DLC к https://www.gmodstore.com/market/view/blackberry-minimalistic-inventory
+                  </div>
+                  <% } %>
+                  <% if (product.allow != 'wait') { %>
+                  <div class="alert alert-info">
+                     Аддон отсканирован и проверен и не содержит никакого вредоносного кода.
+                  </div>
+                  <% } %>
+                  <div class="mb-3 bg-section pb-2 text-center overflow-hidden">
+                     <% if (!user) {%>
+                     <a class="btn btn-purple w-1 mb-2 rounded-0" href="/buy/<%=product.id%>">Купить</a>
+                     <span class="text-muted small p-3">Цена установленная продавцом <%=product.price%> руб.</span>
+                     <% } %>
+                     <% if (user) {
+                        var buy = false
+                        for (var value of purchases.values()) {
+                          if (value == product.id) {
+                          buy = true
+                          }
+                        }
+                        if (product.seller == user.steamid) {%>
+                     <a class="btn btn-primary w-1 mb-2 rounded-0" href="/downloads/<%=product.id%>">Скачать</a>
+                     <span class="small p-3">Аддон купили <%=product.purchases%> раз</span>
+                     <% } else if (buy) {%>
+                     <a class="btn btn-primary w-1 mb-2 rounded-0" href="/downloads/<%=product.id%>">Скачать</a>
+                     <span class="small p-3">Вы купили данный аддон</span>
+                     <% } else {%>
+                     <a class="btn btn-purple w-1 mb-2 rounded-0" href="/buy/<%=product.id%>">Купить</a>
+                     <span class="text-muted small p-3">Цена установленная продавцом <%=product.price%> руб.</span>
+                     <%}
+                        }%>
+                  </div>
+                  <div class="bg-section mb-3 text-center">
+                     <a href="#reviews" class="review-btns tippy" data-tippy-content="Based on user reviews">
+                        <div class="review-up"><%=product.positive%><small>Положительные</small></div>
+                        <div class="review-down"><%=product.negative%><small>Отрицательные</small></div>
+                     </a>
+                  </div>
+                  <% if (user) {
+                     if (product.seller == user.steamid) {%>
+                  <div class="mb-3">
+                     <a class="btn btn-info w-1 mb-2" href="/edit/<%=product.id%>">Редактировать</a>
+                     <a class="btn btn-danger btn-sm w-1 mb-2" href="javascript:;" onclick="simplePost('/api/remove/<%=product.id%>', this, '' , false, null)">Удалить</a>
+                  </div>
+                  <%}}%>
+                  <% if (user) {
+                  if (admin == 'rank rank-moderator') { %>
+                  <div class="mb-3">
+                     <% if (product.allow == 'accept') { %>
+                     <a class="btn btn-danger btn-sm w-1 mb-2" href="javascript:;" onclick="simplePost('/api/admin/disable/<%=product.id%>', this, '' , true, null)">[A] Отключить аддон</a>
+                     <% } else if (product.allow == 'deny') { %>
+                     <a class="btn btn-success btn-sm w-1 mb-2" href="javascript:;" onclick="simplePost('/api/admin/enable/<%=product.id%>', this, '' , true, null)">[A] Включить аддон</a>
+                     <% } %>
+                  </div>
+                  <% }} %>                  
+                  <ul class="side-list mb-3">
+                     <li>
+                        <p>Статистика</p>
+                     </li>
+                     <li><a href="javascript:;"><%=product.purchases%> покупок</a></li>
+                     <li>
+                        <a href="javascript:;">
+                           Выложено <span class="timeago" time="<%=datatime%>"></span>
+<!--                      <li>
+                     <p>Теги</p>
+                     </li>
+                     <li>
+                     <a href="javascript:;"><span class="tippy" data-tippy-content="Tags"><%=product.tags%></span>
+                     </a>
+                     </li> -->
+                  </ul>
+               </div>
+               <div class="col-12 mt-5">
+                  <h3>Другие аддоны</h3>
+                  <p class="mb-2 text-muted">Изучите другие аддоны gmodshop.ru</p>
+                  <% random.forEach(product => { %>
+                  <a href="/addon/<%=product.id%>">
+                     <div class="content-preview">
+                        <div class="content-preview-info">
+                           <div class="content-preview-text">
+                              <div class="content-preview-title">
+                                 <%=product.name%>
+                              </div>
+                              <div class="content-preview-stats">
+                                 <span><%=product.purchases%> покупок</span>
+                                 <span class="content-tag-parent">
+                                       <% if (product.category == 1) { %>
+                                       <span class="content-tags tag-entities">Entities</span>
+                                       <% } else if (product.category == 2) { %>
+                                       <span class="content-tags tag-administration">Weapons</span>
+                                       <% } else if (product.category == 3) { %>
+                                       <span class="content-tags tag-gui">GUI</span>
+                                       <% } else if (product.category == 4) { %>
+                                       <span class="content-tags tag-web">Web</span>
+                                       <% } else if (product.category == 5) { %>
+                                       <span class="content-tags tag-administration">Administration</span>
+                                       <% } else if (product.category == 6) { %>
+                                       <span class="content-tags tag-gamemode">Gamemode</span>
+                                       <% } %>
+                                       <% if (product.gamemodes == 1) { %>
+                                       <span class="content-tags tag-administration">DarkRP</span>
+                                       <% } else if (product.gamemodes == 2) { %>
+                                       <span class="content-tags tag-administration">TTT</span>
+                                       <% } else if (product.gamemodes == 3) { %>
+                                       <span class="content-tags tag-administration">Sandbox</span>
+                                       <% } else if (product.gamemodes == 4) { %>
+                                       <span class="content-tags tag-administration">ClockWork</span>
+                                       <% } %>
+                              </span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </a>
+                  <% }) %>
+               </div>
+            </div>
+         </div>
+      </main>
+      <script src="/sitejs"></script>
+   </body>
+   <% } else { %>
+   <main role="main" class="pb-3">
+      <div class="container mt-5">
+         <div class="row">
+            <div class="col-12 text-center">
+               <h1>:(</h1>
+               <h4>Аддон не был найден</h4>
+               <p>Возможно он был заблокирован на GmodShop.</p>
+            </div>
+         </div>
+      </div>
+   </main>
+   <% } %>
+</html>

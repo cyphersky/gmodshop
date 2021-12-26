@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="application-name" content="gmodshop">
+<!--       <meta name="title" content="Магазин аддонов GMOD | gmod shop gmodshop">
+      <meta property="og:title" content="Магазин аддонов GMOD | gmod shop gmodshop"> -->
+      <title>Магазин аддонов GMOD | GmodShop Marketplace</title>
+      <meta name="title" content="Магазин аддонов GMOD | GmodShop Marketplace">
+      <meta property="og:title" content="Магазин аддонов GMOD | GmodShop Marketplace">
+      <meta property="og:site_name" content="Магазин аддонов GMOD | GmodShop">
+      <meta name="url" content="https://gmodshop.ru">
+      <meta name="language" content="RU">
+      <meta name="robots" content="index,follow">
+      <meta name="theme-color" content="#1394f0">
+      <meta name="description" content="Магазин аддонов для Garry's Mod">
+<!--       <meta name="description" content="Discover Garry's Mod addons. Free Gmod addons downloads, gmodshop, DarkRP, TTT & Roleplay files."> -->
+      <meta property="og:description" content="Discover Garry's Mod addons. Free Gmod addons downloads, gmodshop, DarkRP, TTT & Roleplay files.">
+      <meta name="keywords" content="free, gmod, addons, garrys, mod, entities, money, printer, hud, lua, store, download, backdoor, scanner, darkrp, ttt, rp, sandbox">
+      <meta property="og:keywords" content="free, gmod, gmodshop, addons, garrys, mod, entities, money, printer, hud, lua, store, download, backdoor, darkrp, ttt, rp, sandbox">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+      <link rel="stylesheet" href="/css">
+      <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-112520490-5"></script>
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+      <!-- <link rel="shortcut icon" type="image/x-icon" href="http://62.122.213.134:3000/favicon.ico"> -->
+      <link rel="shortcut icon" type="image/x-icon" href="https://cdn.gmodshop.ru/favicon.ico">
+      <link rel="icon" href="https://cdn.gmodshop.ru/favicon.ico" type="image/x-icon">
+      <link rel="stylesheet" href="/site">
+      <script src="https://kit.fontawesome.com/5d888f9695.js" crossorigin="anonymous"></script>
+      <!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(76759564, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/76759564" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<meta name="enot" content="2221619612688WTCDI8RZ0Z0sPAbhcH7ouZxURy7jONpD" />
+   </head>
+   <body>
+      <header>
+      <div class="addon-bg"></div>
+      <nav class="navbar navbar-expand-xl navbar-toggleable-xl bg-blue-transparent ">
+         <div class="container">
+            <span class="navbar-logo">
+            <a href="/" title="Home" class="text-white">gmodshop.ru</a>
+            </span>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" aria-expanded="false" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+            </button>
+            <div class="navbar-collapse collapse">
+               <ul class="navbar-nav right-nav">
+                  <li class="nav-item">
+                     <a class="nav-link" href="/search">Магазин</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/about">Подробнее</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/partners">Партнёры</a>
+                  </li>
+                  <!--                   <li class="nav-item">
+                     <a class="nav-link" href="https://discord.gg/D44kYmT" target="_blank">Discord</a>
+                     </li> -->
+                  <li class="nav-item auth-nav">
+                     <a class="nav-link" href="/support">Поддержка</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/upload">Загрузить</a>
+                  </li>
+                  <li class="nav-item left-nav auth-nav">
+                     <% if (user) { %>
+                     <a class="nav-link" href="/notifications" style="padding-right: 0 !important;">
+                        <% if (auth.isnotify) { %>
+                        <div class="notification-circle">
+                           <i class="fas fa-bell"></i>
+                           <div class="notification-number"></div>
+                        </div>
+                        <% } else { %>
+                        <div class="notification-circle">
+                           <div class="tippy" data-tippy-content="My notifications"><i class="far fa-bell"></i></div>
+                        </div>
+                        <% } %>
+                     </a>
+
+                     <% } %>
+                  </li>
+                  <% if (user) { %>
+                  <li class="nav-item auth-nav">
+                     <a class="nav-link" href="/u/<%= user.steamid %>">Профиль</a>
+                  </li>
+                  <li class="nav-item auth-nav">
+                     <a class="nav-link" href="/dashboard">Настройки</a>
+                  </li>
+                  <% if (auth.rank == 'rank rank-moderator' || auth.rank == 'rank rank-owner') {%>
+                  <li class="nav-item auth-nav">
+                     <a class="nav-link" href="/admin" target="_blank">Админ-панель</a>
+                  </li>
+                  <% } %>
+                  <% } else { %>
+                  <a class="nav-link" href="/authenticate">Авторизация</a>
+                  <% } %>
+               </ul>
+            </div>
+         </div>
+      </nav>
+   </header>
+      <div class="bg-blue-transparent">
+         <div class="container p-addon-bg">
+            <div class="row">
+               <div class="col-12 text-center">
+                  <div class="sect w-1">
+                     <h1 class="display-heading-1 text-white">gmodshop</h1>
+                     <h5 class="text-white" style="opacity: 0.8;">Наша бдительность - ваше спокойствие</h5>
+                     <div class="mt-5">
+                        <a href="/search" class="btn btn-lg btn-light mr-md-4">Аддоны</a>
+                        <a href="https://discord.gg/8YHVgPBg7N" target="_blank" class="local btn btn-lg btn-secondary-white">Зайти в дискорд</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="graphic graphic-blue text-white graphic-thin mh rounded-0">
+         <div class="graphic-text">
+            <span>Аддоны для Garry's Mod</span>
+         </div>
+      </div>
+      <div class="bg-body pt-5">
+         <div class="container">
+            <div class="row">
+               <div class="col-12">
+                  <div class="sect-compact">
+                     <h3 class="mb-4">Популярные аддоны</h3>
+                     <% ap2.forEach(product => {
+                     %>
+                     <a href="/addon/<%=product.id%>">
+                        <div class="content-preview">
+                           <div class="content-preview-info">
+                              <div class="content-preview-banner" style="background-image: url(<%=product.img%>);">
+                                 <div class="content-preview-opacity"></div>
+                              </div>
+                              <div class="content-preview-text">
+                                 <div class="content-preview-title">
+                                    <%=product.name%>
+                                 </div>
+                                 <div class="content-preview-stats">
+                                    <span>Addon</span>
+                                    <span class="content-tag-parent">
+                                       <span class="content-tags tag-premium tippy" ><%=product.price%> ₽</span>
+                                       <% if (product.category == 1) { %>
+                                       <span class="content-tags tag-entities">Entities</span>
+                                       <% } else if (product.category == 2) { %>
+                                       <span class="content-tags tag-administration">Weapons</span>
+                                       <% } else if (product.category == 3) { %>
+                                       <span class="content-tags tag-gui">GUI</span>
+                                       <% } else if (product.category == 4) { %>
+                                       <span class="content-tags tag-web">Web</span>
+                                       <% } else if (product.category == 5) { %>
+                                       <span class="content-tags tag-administration">Administration</span>
+                                       <% } else if (product.category == 6) { %>
+                                       <span class="content-tags tag-gamemode">Gamemode</span>
+                                       <% } %>
+                                       <% if (product.gamemodes == 1) { %>
+                                       <span class="content-tags tag-administration">DarkRP</span>
+                                       <% } else if (product.gamemodes == 2) { %>
+                                       <span class="content-tags tag-administration">TTT</span>
+                                       <% } else if (product.gamemodes == 3) { %>
+                                       <span class="content-tags tag-administration">Sandbox</span>
+                                       <% } else if (product.gamemodes == 4) { %>
+                                       <span class="content-tags tag-administration">ClockWork</span>
+                                       <% } %>
+<!--                                        <% if (product.purchases > 0) { %>
+                                       <span class="content-tags tag-reviews"><%=product.purchases%> покупок</span>
+                                       <% } %> -->
+                                    <span class="content-tags tag-"></span>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </a>
+                     <% }) %>
+                  </div>
+                  <div class="mb-5 sect-compact text-center">
+                     <a href="/search?page=1&amp;category=all&amp;sort=hot&amp;gamemode=all&amp;query=" class="btn btn-secondary">Больше аддонов</a>
+                  </div>
+               </div>
+               <div class="sect-compact">
+                  <h3 class="mb-3">Новые аддоны</h3>
+                  <% ap.forEach(product => {
+                  %>
+                  <a href="/addon/<%=product.id%>">
+                        <div class="content-preview">
+                           <div class="content-preview-info">
+                              <div class="content-preview-banner" style="background-image: url(<%=product.img%>);">
+                                 <div class="content-preview-opacity"></div>
+                              </div>
+                              <div class="content-preview-text">
+                                 <div class="content-preview-title">
+                                    <%=product.name%>
+                                 </div>
+                                 <div class="content-preview-stats">
+                                    <span>Addon</span>
+                                    <span class="content-tag-parent">
+                                       <span class="content-tags tag-premium tippy" ><%=product.price%> ₽</span>
+                                       <% if (product.category == 1) { %>
+                                       <span class="content-tags tag-entities">Entities</span>
+                                       <% } else if (product.category == 2) { %>
+                                       <span class="content-tags tag-administration">Weapons</span>
+                                       <% } else if (product.category == 3) { %>
+                                       <span class="content-tags tag-gui">GUI</span>
+                                       <% } else if (product.category == 4) { %>
+                                       <span class="content-tags tag-web">Web</span>
+                                       <% } else if (product.category == 5) { %>
+                                       <span class="content-tags tag-administration">Administration</span>
+                                       <% } else if (product.category == 6) { %>
+                                       <span class="content-tags tag-gamemode">Gamemode</span>
+                                       <% } %>
+                                       <% if (product.gamemodes == 1) { %>
+                                       <span class="content-tags tag-administration">DarkRP</span>
+                                       <% } else if (product.gamemodes == 2) { %>
+                                       <span class="content-tags tag-administration">TTT</span>
+                                       <% } else if (product.gamemodes == 3) { %>
+                                       <span class="content-tags tag-administration">Sandbox</span>
+                                       <% } else if (product.gamemodes == 4) { %>
+                                       <span class="content-tags tag-administration">ClockWork</span>
+                                       <% } %>
+<!--                                        <% if (product.purchases > 0) { %>
+                                       <span class="content-tags tag-reviews"><%=product.purchases%> покупок</span>
+                                       <% } %> -->
+                                    <span class="content-tags tag-"></span>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </a>
+                     <% }) %>
+                     <div class="mb-5 mt-5 sect-compact text-center">
+                </div>
+                  </a>
+               </div>
+            </div>
+         </div>
+      <div class="accept-cookies" id="allowcookies">
+        <div class="m-auto w-1">
+            <div class="row">
+                <div class="col-md-8">
+                    <p>Мы используем файлы cookie на этом веб-сайте.</p>
+                </div>
+                <div class="col-md-4 mt-3 mt-md-0">
+                    <a href="javascript:;" onclick="setCookie('gmodshopcookies', 'ok');$('#allowcookies').css('display', 'none');" class="btn btn-sm">Принять Cookies</a>
+
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+      <script src="https://cdn.gmodshop.ru/cockie.js"></script>
+   </body>
+</html>
+
+<%- include("partials/footer") %>
