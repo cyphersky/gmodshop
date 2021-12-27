@@ -4,5 +4,5 @@ garry's mod marketplace addons
 Garry's mod marketplace addons
 
 ## Install
-Install the dependencies using the command "npm install"
-Configure the configuration file "gmodconfig.json"
+- Install the dependencies using the command "npm install"
+- Configure the configuration file "gmodconfig.json"
